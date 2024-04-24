@@ -1,6 +1,20 @@
 {
   "names": {
-    "_": "7579076d9aff0a4cfdefa7e2045f2486c7e5d8bc63bfc6b45397233e1bbfcb19",
+    "_": "e24a86943d37a91ab485d6f9a7c66097c25ddd67e8bd1b75ed252a3c266cf9bb",
+    "greenart7c3": "7579076d9aff0a4cfdefa7e2045f2486c7e5d8bc63bfc6b45397233e1bbfcb19",
     "amber": "eee391eec3551ed23b961027de2355c0f2d89a92baf498d9b74863778d0b97c2"
+  },
+  "nip46": {
+    "e24a86943d37a91ab485d6f9a7c66097c25ddd67e8bd1b75ed252a3c266cf9bb": [
+      "wss://relay.nsec.app"
+    ],
+    "7579076d9aff0a4cfdefa7e2045f2486c7e5d8bc63bfc6b45397233e1bbfcb19": [
+      "wss://relay.nsec.app"
+    ]
+  },
+  "relays": {
+    "7579076d9aff0a4cfdefa7e2045f2486c7e5d8bc63bfc6b45397233e1bbfcb19": [
+      "wss://relay.nsec.app"
+    ]
   }
 }
