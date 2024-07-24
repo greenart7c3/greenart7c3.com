@@ -7,46 +7,130 @@
     <title>greenart7c3</title>
     <link rel="stylesheet" href="variables.css">
     <link rel="stylesheet" href="main.css">
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .qr-code-container {
+            display: inline-block;
+            padding: 10px;
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
     <div id="content" class="content">
         <main>
-            <h1 id="donate-to-greenart7c3"><a class="header" href="#donate-to-greenart7c3">Donate to greenart7c3</a>
-            </h1>
+            <h1 id="donate-to-greenart7c3"><a class="header" href="#donate-to-greenart7c3">Donate to greenart7c3</a></h1>
             <p>Your donation directly supports the continued development of <code class="hljs">Amber and Citrine</code>!</p>
             <h3 id="bitcoin"><a class="header" href="#bitcoin">Bitcoin</a></h3>
             <ul>
-                <li>🔗 On-chain: <code class="hljs"><a target="_blank"
-                    href="bitcoin:bc1q3vklxkvqmhnyws5danvaawa7alkllwyaazdtsl">bc1p0ucugqn8mm8ajqude9c6almneg4d9hxdcyp9p6w9xef28nhxmkgsxhwx9c</a></code></li>
-                <li>🔗 Paynym: <code class="hljs"><a target="_blank"
-                    href="https://paynym.is/+florallake7D2">+florallake7D2</a></code></li>
-                <li>🔗 Paynym Code: <code class="hljs"><a target="_blank"
-                    href="bitcoin:PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGNX5BE3?title=+florallake7D2">PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGNX5BE3</a></code></li>    
+                <li>🔗 On-chain: <code class="hljs"><a target="_blank" href="bitcoin:bc1qj8mklpvj35z4wamaz2aeu4cmwmgqsv22jhn9qg">bc1qj8mklpvj35z4wamaz2aeu4cmwmgqsv22jhn9qg</a></code></li>
+                <button onclick="showQRCode('bitcoin:bc1qj8mklpvj35z4wamaz2aeu4cmwmgqsv22jhn9qg')">Show QR Code</button>
+                <li>🔗 Paynym: <code class="hljs"><a target="_blank" href="https://paynym.is/+florallake7D2">+florallake7D2</a></code></li>
+                <button onclick="showQRCode('bitcoin:PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGNX5BE3?title=+florallake7D2')">Show QR Code</button>
+                <li>🔗 Paynym Code: <code class="hljs"><a target="_blank" href="bitcoin:PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGNX5BE3?title=+florallake7D2">PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGNX5BE3</a></code></li>
+                <button onclick="showQRCode('bitcoin:PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGNX5BE3?title=+florallake7D2')">Show QR Code</button>
+                <li>🔗 Silent payment: <code class="hljs"><a target="_blank" href="bitcoin:sp1qqtulkqhe02st3ysw2pxn483n82256jftvxwmamespr9hyzpeq8wzwqcejz9xk7lepu87hhxkx9enn5mqclmlacdvfqrfacwwu6l0v3ke4ssxy6vl">sp1qqtulkqhe02st3ysw2pxn483n82256jftvxwmamespr9hyzpeq8wzwqcejz9xk7lepu87hhxkx9enn5mqclmlacdvfqrfacwwu6l0v3ke4ssxy6vl</a></code></li>
+                <button onclick="showQRCode('sp1qqtulkqhe02st3ysw2pxn483n82256jftvxwmamespr9hyzpeq8wzwqcejz9xk7lepu87hhxkx9enn5mqclmlacdvfqrfacwwu6l0v3ke4ssxy6vl')">Show QR Code</button>
                 <li>⚡ Lightning:
                     <ul>
-                        <li><code>greenart7c3@getalby.com</code> (<a class="hljs" target="_blank"
-                                href="https://getalby.com/p/greenart7c3">https://getalby.com/p/greenart7c3</a>)</li>
+                        <li><code>greenart7c3@greenart7c3.com</code> (<a class="hljs" target="_blank" href="https://getalby.com/p/greenart7c3">https://getalby.com/p/greenart7c3</a>)
+                        <button onclick="showQRCode('greenart7c3@greenart7c3.com')">Show QR Code</button></li>
+                        <li><code>Bolt12</code> (<a class="hljs" target="_blank" href="bitcoin:lno1zrxq8pjw7qjlm68mtp7e3yvxee4y5xrgjhhyf2fxhlphpckrvevh50u0qf0rkmwkway9zdexsv7dhlv2pvxf5dna53vm5jv0lsjeukuk0kzyjqszy34ert0ugaaaqvky3794d70kjhuclc7ezkjdeumy2wymtflk5kfsqvmyvn65lnqvg6s0d3qyyprjzkuune84weneg37hn4pycgmv32d8nfup7n8l5jctgqmpfwnyhsqzwv2fkgxsqdcx6u2yqnhsnpdy4q86htc6raqzzqjdcf3qmufzcfwxvzd65cecxqqs9vpm8ja5vxdkjdkvmmmq3dqzlv">lno1zrxq8pjw7qjlm68mtp7e3yvxee4y5xrgjhhyf2fxhlphpckrvevh50u0qf0rkmwkway9zdexsv7dhlv2pvxf5dna53vm5jv0lsjeukuk0kzyjqszy34ert0ugaaaqvky3794d70kjhuclc7ezkjdeumy2wymtflk5kfsqvmyvn65lnqvg6s0d3qyyprjzkuune84weneg37hn4pycgmv32d8nfup7n8l5jctgqmpfwnyhsqzwv2fkgxsqdcx6u2yqnhsnpdy4q86htc6raqzzqjdcf3qmufzcfwxvzd65cecxqqs9vpm8ja5vxdkjdkvmmmq3dqzlv</a>)
+                        <button onclick="showQRCode('lno1zrxq8pjw7qjlm68mtp7e3yvxee4y5xrgjhhyf2fxhlphpckrvevh50u0qf0rkmwkway9zdexsv7dhlv2pvxf5dna53vm5jv0lsjeukuk0kzyjqszy34ert0ugaaaqvky3794d70kjhuclc7ezkjdeumy2wymtflk5kfsqvmyvn65lnqvg6s0d3qyyprjzkuune84weneg37hn4pycgmv32d8nfup7n8l5jctgqmpfwnyhsqzwv2fkgxsqdcx6u2yqnhsnpdy4q86htc6raqzzqjdcf3qmufzcfwxvzd65cecxqqs9vpm8ja5vxdkjdkvmmmq3dqzlv')">Show QR Code</button></li>
                     </ul>
                 </li>
             </ul>
             <h3 id="other-coins"><a class="header" href="#other-coins">Other coins</a></h3>
-            <p>If you are interested in supporting <code
-                    class="hljs">Amber and Citrine</code> with other coins, some swap services are available to convert them
-                directly into bitcoin:</p>
+            <p>If you are interested in supporting <code class="hljs">Amber and Citrine</code> with other coins, some swap services are available to convert them directly into bitcoin:</p>
             <ul>
-                <li><a class="hljs "target="_blank" href="https://sideshift.ai/">https://sideshift.ai/</a></li>
+                <li><a class="hljs" target="_blank" href="https://sideshift.ai/">https://sideshift.ai/</a></li>
                 <li><a class="hljs" target="_blank" href="https://fixedfloat.com/">https://fixedfloat.com/</a></li>
             </ul>
     
             <h3 id="source-code"><a class="header" href="#source-code">Source code</a></h3>
-
             <ul>
-                <li><a class="hljs "target="_blank" href="https://github.com/greenart7c3/Amber">Amber</a></li>
+                <li><a class="hljs" target="_blank" href="https://github.com/greenart7c3/Amber">Amber</a></li>
                 <li><a class="hljs" target="_blank" href="https://github.com/greenart7c3/Citrine">Citrine</a></li>
             </ul>
         </main>
     </div>
+
+    <!-- Modal structure -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="qr-code-container">
+                <div id="qrcode"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="qrcode.min.js"></script>
+    <script>
+        function showQRCode(text) {
+            var modal = document.getElementById('qrModal');
+            var qrcodeContainer = document.getElementById('qrcode');
+            qrcodeContainer.innerHTML = ""; // Clear previous QR code
+            var qrcode = new QRCode(qrcodeContainer, {
+                text: text,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('qrModal');
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('qrModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
