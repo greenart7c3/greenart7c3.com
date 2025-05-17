@@ -60,24 +60,18 @@
             <p>Your donation directly supports the continued development of <code class="hljs">Amber and Citrine</code>!</p>
             <h3 id="bitcoin"><a class="header" href="#bitcoin">Bitcoin</a></h3>
             <ul>
-                <form method="POST" action="https://btcpay.greenart7c3.com/api/v1/invoices" class="btcpay-form btcpay-form--block">
-                <input type="hidden" name="storeId" value="Gwk2MD8ZudZQjVYGpeEJ7Nr12EXSkocecJsExEm9THVw" />
-                <input type="hidden" name="jsonResponse" value="true" />
-                <input type="hidden" name="currency" value="USD" />
-                <input type="image" class="submit" name="submit" src="https://btcpay.greenart7c3.com/img/paybutton/pay.svg" style="width:209px" alt="Pay with BTCPay Server, a Self-Hosted Bitcoin Payment Processor">
-                </form>
+                <li>🔗 On-chain: <code class="hljs"><a target="_blank" href="bitcoin:bc1qj8mklpvj35z4wamaz2aeu4cmwmgqsv22jhn9qg">bc1qj8mklpvj35z4wamaz2aeu4cmwmgqsv22jhn9qg</a></code></li>
+                <button onclick="showQRCode('bitcoin:bc1qj8mklpvj35z4wamaz2aeu4cmwmgqsv22jhn9qg')">Show QR Code</button>
                 <li>🔗 Paynym: <code class="hljs"><a target="_blank" href="https://paynym.rs/+tenseprofession72">+tenseprofession72</a></code></li>
                 <button onclick="showQRCode('bitcoin:PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGW4su2R?title=+tenseprofession72')">Show QR Code</button>
                 <li>🔗 Paynym Code: <code class="hljs"><a target="_blank" href="bitcoin:PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGW4su2R?title=+tenseprofession72">PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGW4su2R</a></code></li>
                 <button onclick="showQRCode('bitcoin:PM8TJbaBS3cTKhwJbqiwrMCwKNVDeimvUjGpEzFCvn7ybrGbLEkE1MHz3KDyzEmCuTKCMipgd6vFjfxpUMrjM6LSQ7B6V4yB4WTVmmkfxibFNGW4su2R?title=+tenseprofession72')">Show QR Code</button>
                 <li>⚡ Lightning:
                     <ul>
-                        <li><code>mightycrab22@zeusnuts.com</code> (<a class="hljs" target="_blank" href="https://zeusnuts.com/mightycrab22">mightycrab22@zeusnuts.com</a>)
-                        <button onclick="showQRCode('mightycrab22@zeusnuts.com')">Show QR Code</button></li>
+                        <li><code>greenart7c3@coinos.io</code> (<a class="hljs" target="_blank" href="https://coinos.io/greenart7c3">greenart7c3@coinos.io</a>)
+                        <button onclick="showQRCode('greenart7c3@coinos.io')">Show QR Code</button></li>
                     </ul>
                 </li>
-                <li>🔗 Monero: <code class="hljs"><a target="_blank" href="monero:48nyqvKwXsNKcryVsMVLmtDgC3BdaSW4UBgS3Nwj2GBfR8BsjsUArgsTfsj7aHyWDWFPTFBug3c7PJZi4kU6XHBp7DMbESE">48nyqvKwXsNKcryVsMVLmtDgC3BdaSW4UBgS3Nwj2GBfR8BsjsUArgsTfsj7aHyWDWFPTFBug3c7PJZi4kU6XHBp7DMbESE</a></code></li>
-                <button onclick="showQRCode('monero:48nyqvKwXsNKcryVsMVLmtDgC3BdaSW4UBgS3Nwj2GBfR8BsjsUArgsTfsj7aHyWDWFPTFBug3c7PJZi4kU6XHBp7DMbESE')">Show QR Code</button>
             </ul>
             <h3 id="other-coins"><a class="header" href="#other-coins">Other coins</a></h3>
             <p>If you are interested in supporting <code class="hljs">Amber and Citrine</code> with other coins, some swap services are available to convert them directly into bitcoin:</p>
@@ -133,30 +127,6 @@
             }
         }
     </script>
-    <script>
-    if (!window.btcpay) {
-        var script = document.createElement('script');
-        script.src = "https://btcpay.greenart7c3.com/modal/btcpay.js";
-        document.getElementsByTagName('head')[0].append(script);
-    }
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200 && this.responseText) {
-                window.btcpay.appendInvoiceFrame(JSON.parse(this.responseText).invoiceId);
-            }
-        };
-        xhttp.open('POST', event.target.getAttribute('action'), true);
-        xhttp.send(new FormData(event.target));
-    }
-    document.querySelectorAll(".btcpay-form").forEach(function(el) {
-        if (!el.dataset.initialized) {
-            el.addEventListener('submit', handleFormSubmit);
-            el.dataset.initialized = true;
-        }
-    });
-</script>
 </body>
 
 </html>
