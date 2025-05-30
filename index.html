@@ -72,10 +72,11 @@
     <script src="qrcode.min.js"></script>
     <script>
         function showQRCode(text) {
-            var modal = document.getElementById('qrModal');
-            var qrcodeContainer = document.getElementById('qrcode');
-            qrcodeContainer.innerHTML = ""; // Clear previous QR code
-            var qrcode = new QRCode(qrcodeContainer, {
+            const modal = document.getElementById('qrModal');
+            const qrcodeContainer = document.getElementById('qrcode');
+            qrcodeContainer.innerHTML = ""; // Clear previous QR
+
+            new QRCode(qrcodeContainer, {
                 text: text,
                 width: 256,
                 height: 256,
@@ -83,11 +84,13 @@
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
-            modal.style.display = "block";
+
+            // Show the modal with flex layout
+            modal.style.display = "flex";
         }
 
         function closeModal() {
-            var modal = document.getElementById('qrModal');
+            const modal = document.getElementById('qrModal');
             modal.style.display = "none";
         }
 
